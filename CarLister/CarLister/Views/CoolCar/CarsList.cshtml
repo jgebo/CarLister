@@ -1,0 +1,74 @@
+﻿@model CarLister.Models.CarViewModel
+@using PagedList.Mvc;
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">*@
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                Year
+            </th>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Trim
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.carsList)
+        {
+            <tr>
+                <td>
+                    @item.model_year
+                </td>
+                <td>
+                    @item.make
+                </td>
+                <td>
+                    @item.model_name
+                </td>
+                <td>
+                    @item.model_trim
+                </td>
+                @if (item.picurl != null && item.picurl != "")
+                {
+                    <td>
+                        <a class="thumbnail" href="@Url.Content(item.picurl)">
+                            <img src="@Url.Content(item.picurl)" width="100" />
+                            <span class="joe">
+                            <img src="@Url.Content(item.picurl)" width="650">
+                            </span>
+                        </a>
+                        </td>
+                }
+                else
+                {
+                        <td>
+                        No Picture available;
+                        </td>
+                }
+                <td>
+                   
+                    @Html.ActionLink("Details", "Details", "CoolCar", new { id = item.id }, new { @class = "btn btn-info" })
+                        @*{
+                            param1 = item.model_year,
+                            param2 = item.make,
+                            param3 = item.model_name
+                        },*@
+                       
+                </td>
+            </tr>
+        }
+    </table>
+    
+    <br />
+    @*<div id="pagedList">*@
+        Page @(Model.carsList.PageCount < Model.carsList.PageNumber ? 0 : Model.carsList.PageNumber) of @Model.carsList.PageCount
+        @Html.PagedListPager(Model.carsList, page => @Url.Action("CarsList", new { page }))
+    @*</div>*@
+</div>    

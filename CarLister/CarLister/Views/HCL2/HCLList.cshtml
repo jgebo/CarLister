@@ -1,0 +1,124 @@
+﻿@*@model IEnumerable<CarLister.Models.HCLViewModel>*@
+
+
+@model PagedList.IPagedList<CarLister.Models.HCLViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">
+
+@{
+    ViewBag.Title = "Select Car";
+}
+
+<h2>Car List - Almost any car from 1936 to present</h2>
+
+
+@using (Html.BeginForm("HCLList", "HCL2", FormMethod.Post, new { enctype = "multipart/form-data", name= "myform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Make", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MakeId", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Model", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ModelId", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+</div>
+        
+}
+
+<div class="container" id="PartialView" >
+    @Html.Partial("_List_Of_Cars")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        @*
+            This script will tie the Model and Make input fields together, so that when the make selector is activated
+            the select make's models will show up in the MakeID field.
+        *@
+        $(document).ready(function () {
+            $("#ModelId").prop("disabled", true);
+            $("#MakeId").change(function () {
+                if ($("#MakeId").val() != "") {
+                    var options = {};
+                    options.url = "GetCarModels";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ MakeId: $("#MakeId").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (jsViewModels) {
+                        $("#ModelId").empty();
+                        for (key in jsViewModels) {
+                            $("#ModelId").append("<option " + "value = " + key + ">" + jsViewModels[key] + "</option>");
+                        }
+                        $("#ModelId").prop("disabled", false);
+                        $("PartialView").load('@Url.Action("HCLList","Cars", null, Request.Url.Scheme))?param1=" +('#modelId.val());
+                    };
+                    options.error = function () { aleart("Error retrieving models"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#ModelId").empty();
+                    $("#ModelId").prop("disabled", true);
+                }
+                })
+           
+            $("#ModelId").change(function ()
+            {
+                if ($("#ModelId").val() != "")
+                {
+                    var options = {};
+                    options.url = "GetCarList2";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ MakeId: $("#MakeId").val(), ModelId: $("#ModelId").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (result) {
+                        $("#carList").empty();
+                        $("#carList tbody" ).html(data);
+                        //$("#carList tbody").append($(result));
+                    }
+
+                        //$("#carBody").empty();
+                        //for
+                        //    //(key in HCLViewModels)
+                        //( var i = 0; i < Model.length; i++) 
+                        //    {
+                        //        $("#carBody").append(model[i].id + model[i].make  + model[i].model  + model[id].trim + model[id].year + model[id].picurl);
+                        //    }
+
+                      //}
+
+
+
+                    //options.success = function (HCLViewModels)
+                    //{
+                    //    $("#carBody").empty();
+                    //    for (key in HCLViewModels) {
+                    //        $("#carBody").append("<option " + "value = " + key + ">" + HCLViewModels[key] + "</option>");
+                    //}
+
+
+                        $("#ModelId").prop("disabled", false)
+                    };
+                    options.error = function () { aleart("Error retrieving body"); };
+                    $.ajax(options);
+               //}
+            })
+        })
+    </script>
+
+}
+

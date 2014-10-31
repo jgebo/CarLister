@@ -1,0 +1,105 @@
+﻿@model CarLister.Models.Car
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Cars (Standard)</h2>
+
+
+@using (Html.BeginForm("Create", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Make", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MakeId", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModelId, "Model", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ModelId", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YearId, "Year", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("YearId", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label("Picture", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" class="form-control" id="fileUpload" name="fileUpload" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "UncoolList")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        @*
+            This script will tie the Model and Make input fields together, so that when the make selector is activated
+            the select make's models will show up in the MakeID field.
+        *@
+        $(document).ready(function () {
+            $("#ModelId").prop("disabled", true);
+            $("#MakeId").change(function () {
+                if ($("#MakeId").val() != "") {
+                    var options = {};
+                    options.url = "GetCarModels";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ carMakeID: $("#MakeId").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (carListerModels) {
+                        $("#ModelId").empty();
+                        for (key in carListerModels) {
+                            $("#ModelId").append("<option " + "value = " + key + ">" + carListerModels[key] + "</option>");
+                        }
+                        $("#ModelId").prop("disabled", false);
+                    };
+                    options.error = function () { aleart("Error retrieving models"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#ModelId").empty();
+                    $("#ModelId").prop("disabled", true);
+                }
+            })
+        })
+    </script>
+
+}
+
+

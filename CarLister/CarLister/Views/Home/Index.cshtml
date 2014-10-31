@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/1970_corvette.jpg">
+
+    <title>Car Lister - Homepage</title>
+
+    <!-- Bootstrap core CSS -->
+    @*<link href="css/bootstrap.css" rel="stylesheet">*@
+
+    <!-- Custom styles for this template -->
+    <link href="css/color-styles.css" rel="stylesheet">
+    <link href="css/ui-elements.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Resources -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-blue">
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+        <!-- Jumbotron -->
+        <div class="main-slideshow">
+            <div id="main-slideshow" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide No 1 -->
+                    <div class="item active">
+                        <div class="jumbotron first">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1 class="animated slideInLeft">Find Cars<br />Most Makes And Models</h1>
+                                        <p class="lead animated slideInLeft delay-1">Cars From 1936 To Present</p>
+                                            @Html.ActionLink("Large Car List", "Index", "HCL2", null, new { @class = "btn bg-hover-color" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide No 2 -->
+                    <div class="item">
+                        <div class="jumbotron second">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1 class="text-center animated fadeInDown delay-3">A Fancy Way To Look At Cars</h1>
+                                            <div>
+                                                @Html.ActionLink("Cool Car Listings", "Index", "CoolCar", null, new { @class = "btn bg-hover-color" })
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide No 3 -->
+                    <div class="item">
+                        <div class="jumbotron third">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1 class="animated slideInLeft">Standard Car List<br />Find and Add Cars</h1>
+                                        <p class="lead animated slideInLeft delay-1">Experience Its features.</p>
+                                        <div class="col-md-4">
+                                            @Html.ActionLink("Standard Car Listings", "UncoolList", "Cars", null, new { @class = "btn bg-hover-color" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- / Slide No 3 -->
+                </div>
+                <!-- Controls -->
+                <a class="slideshow-arrow slideshow-arrow-prev bg-hover-color" href="#main-slideshow" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="slideshow-arrow slideshow-arrow-next bg-hover-color" href="#main-slideshow" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div> <!-- / Slideshow -->
+        <!-- Intro Text -->
+        <div class="container intro">
+            <div class="row">
+                <div class="col-md-offset-2">
+                    <h2 class="text-color">Three different featured styles of car listings</h2>
+                </div>
+            </div> <!-- / .row -->
+        </div>
+    </div> <!-- / .wrapper -->
+    <!-- Footer -->
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Us -->
+                <div class="col-sm-4">
+                    <h3 class="text-color"><span class="border-color">Contact Us</span></h3>
+                    <div class="content">
+                        <p>
+                            Car lister<br />
+                            0000 Crowne Lake Circle<br />
+                            Jamestown, NC 27282<br />
+                            Phone: +0 000 000 00 00<br />
+                            Fax: +0 000 000 00 00<br />
+                            Email: <a href="#">admin@carlister.com</a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Social icons -->
+                <div class="col-sm-4">
+                    <h3 class="text-color"><span>Go Social</span></h3>
+                    <div class="content social">
+                        <p>Stay in touch with us:</p>
+                        <ul class="list-inline">
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#" class="github"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" class="vk"><i class="fa fa-vk"></i></a></li>
+                            <li><a href="#" class="plus"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- Subscribe -->
+                <div class="col-sm-4">
+                    <h3 class="text-color"><span>Subscribe</span></h3>
+                    <div class="content">
+                        <p>Enter your e-mail below to subscribe to our free newsletter.<br />We promise not to bother you often!</p>
+                        <form class="form" role="form">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <label class="sr-only" for="subscribe-email">Email address</label>
+                                        <input type="email" class="form-control" id="subscribe-email" placeholder="Enter email">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default">OK</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>*@
+    @*<script src="js/scrolltopcontrol.js"></script>*@
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<CarLister.Models.Car>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">
+
+@{
+    ViewBag.Title = "UncoolList";
+}
+
+<h2>Car List</h2>
+
+<p>
+    @Html.ActionLink("Add a Car", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Refresh Cars", "UncoolList", null, new { @class = "btn btn-primary" })
+</p>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr style="background-color:gainsboro">
+                @foreach (var col in new[] { "Year", "Make", "Model", "Price" })
+                {
+                    <th>
+                        @Html.ActionLink(col, "Sort", new { property = col, model = Model })
+                    </th>
+                }
+                <th>
+                    Picture
+                    <div style="font-size:15px">
+                        (Hover for larger imag<br />Click for full size)
+                    </div>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @Html.HiddenFor(modelItem => item.Id)
+                    <td>
+                        @Html.ActionLink(item.Year.Year1.ToString(), "UncoolList", new { id = item.YearId, filter = "Year" }, new { @class = "text-muted" })
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Model.Make.Name, "UncoolList", new { id = item.Model.Make.Id, filter = "Make" }, new { @class = "text-muted" })
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Model.Name, "UncoolList", new { id = item.ModelId, filter = "Model" }, new { @class = "text-muted" })
+                    </td>
+                    <td>
+                        $@item.Price.ToString("N0")
+                    </td>
+                    <td>
+                        <a class="thumbnail" href="@Url.Content(item.PicUrl)">
+                            <img src="@Url.Content(item.PicUrl)" width="100" />
+                            <span class="joe">
+                                <img src="@Url.Content(item.PicUrl)" width="650">
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("UncoolList", new { page }))
+    </div>
+</div>
+<div>
+    @Html.ActionLink("CarLister Home Page", "Index","Home", null, new { @class = "btn btn-info" })
+</div>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HCL2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HCL2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HCL2" EntityType="HCL2Model.HCL2" />
+  </EntityContainer>
+  <EntityType Name="HCL2">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="make" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="model_trim" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_year" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="model_body_style" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_engine_position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_engine_cc" Type="Double" />
+    <Property Name="model_engine_num_cyl" Type="Double" />
+    <Property Name="model_engine_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="mode_engine_valves_per_cyl" Type="Double" />
+    <Property Name="model_engine_power_ps" Type="Double" />
+    <Property Name="model_engine_power_rpm" Type="Double" />
+    <Property Name="model_engine_torque_nm" Type="Double" />
+    <Property Name="model_engine_torque_rpm" Type="Double" />
+    <Property Name="model_engine_bore_mm" Type="Double" />
+    <Property Name="model_engine_stroke_mm" Type="Double" />
+    <Property Name="model_engine_compression" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_engine_fuel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_top_speed_kph" Type="Double" />
+    <Property Name="model_0_to_100_kph" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_drive" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_transmission_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_seats" Type="Double" />
+    <Property Name="model_doors" Type="Double" />
+    <Property Name="model_weight_kg" Type="Double" />
+    <Property Name="model_length_mm" Type="Double" />
+    <Property Name="model_width_mm" Type="Double" />
+    <Property Name="model_height_mm" Type="Double" />
+    <Property Name="model_wheelbase" Type="Double" />
+    <Property Name="model_lkm_hwy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_lkm_mixed" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_lkm_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="model_fuel_cap_l" Type="Double" />
+    <Property Name="model_sold_in_us" Type="Double" />
+    <Property Name="model_co2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="make_display" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="picurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

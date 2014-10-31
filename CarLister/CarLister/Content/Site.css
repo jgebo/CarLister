@@ -1,0 +1,75 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 520px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*my stuff*/
+/* Thumbnail hover popups*/
+
+.joe {
+}
+
+.joe2{
+
+}
+
+.joe3{
+
+}
+
+.thumbnail {
+    position:relative;
+    float:left;
+    padding:0px; 
+}
+
+.thumbnail span {/* css for full siz image */
+    position:absolute;
+    border: 1px solid #666;
+    visibility: hidden;
+    width: 620px;     
+}
+
+.thumbnail:hover span { /* css for enalarged image on hover */
+    visibility:visible;
+    top: 0px; /* position the top of the image 10 pixels up relaltive to the top of the thumbnail*/
+    left: -700px;  /* position the left edge of the image 700 pixels to the left of the thumbnail */
+}
+
+.thumbnail .joe2 {
+    position:fixed;
+    float:right;
+    padding:200px; 
+}
+.thumbnail .joe3 {
+    position:fixed;
+    float:right;
+    padding:700px; 
+}
+
+.thumbnail:hover span.joe { /* css for enalarged image on hover */
+    visibility:visible;
+    top: -100px; /* position the top of the image 10 pixels up relaltive to the top of the thumbnail*/
+    left: -700px;  /* position the left edge of the image 700 pixels to the left of the thumbnail */
+}
+
+.thumbnail:hover span.joe3 { /* css for enalarged image on hover */
+    visibility:visible;
+    top: -500px; /* position the top of the image 10 pixels up relaltive to the top of the thumbnail*/
+    left: 200px;  /* position the left edge of the image 700 pixels to the left of the thumbnail */
+    border: 0px;
+
+}

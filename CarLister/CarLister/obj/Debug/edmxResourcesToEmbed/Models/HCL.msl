@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HCL2ModelStoreContainer" CdmEntityContainer="HCL2Entities">
+    <EntitySetMapping Name="HCL2">
+      <EntityTypeMapping TypeName="HCL2Model.HCL2">
+        <MappingFragment StoreEntitySet="HCL2">
+          <ScalarProperty Name="picurl" ColumnName="picurl" />
+          <ScalarProperty Name="make_display" ColumnName="make_display" />
+          <ScalarProperty Name="model_co2" ColumnName="model_co2" />
+          <ScalarProperty Name="model_sold_in_us" ColumnName="model_sold_in_us" />
+          <ScalarProperty Name="model_fuel_cap_l" ColumnName="model_fuel_cap_l" />
+          <ScalarProperty Name="model_lkm_city" ColumnName="model_lkm_city" />
+          <ScalarProperty Name="model_lkm_mixed" ColumnName="model_lkm_mixed" />
+          <ScalarProperty Name="model_lkm_hwy" ColumnName="model_lkm_hwy" />
+          <ScalarProperty Name="model_wheelbase" ColumnName="model_wheelbase" />
+          <ScalarProperty Name="model_height_mm" ColumnName="model_height_mm" />
+          <ScalarProperty Name="model_width_mm" ColumnName="model_width_mm" />
+          <ScalarProperty Name="model_length_mm" ColumnName="model_length_mm" />
+          <ScalarProperty Name="model_weight_kg" ColumnName="model_weight_kg" />
+          <ScalarProperty Name="model_doors" ColumnName="model_doors" />
+          <ScalarProperty Name="model_seats" ColumnName="model_seats" />
+          <ScalarProperty Name="model_transmission_type" ColumnName="model_transmission_type" />
+          <ScalarProperty Name="model_drive" ColumnName="model_drive" />
+          <ScalarProperty Name="model_0_to_100_kph" ColumnName="model_0_to_100_kph" />
+          <ScalarProperty Name="model_top_speed_kph" ColumnName="model_top_speed_kph" />
+          <ScalarProperty Name="model_engine_fuel" ColumnName="model_engine_fuel" />
+          <ScalarProperty Name="model_engine_compression" ColumnName="model_engine_compression" />
+          <ScalarProperty Name="model_engine_stroke_mm" ColumnName="model_engine_stroke_mm" />
+          <ScalarProperty Name="model_engine_bore_mm" ColumnName="model_engine_bore_mm" />
+          <ScalarProperty Name="model_engine_torque_rpm" ColumnName="model_engine_torque_rpm" />
+          <ScalarProperty Name="model_engine_torque_nm" ColumnName="model_engine_torque_nm" />
+          <ScalarProperty Name="model_engine_power_rpm" ColumnName="model_engine_power_rpm" />
+          <ScalarProperty Name="model_engine_power_ps" ColumnName="model_engine_power_ps" />
+          <ScalarProperty Name="mode_engine_valves_per_cyl" ColumnName="mode_engine_valves_per_cyl" />
+          <ScalarProperty Name="model_engine_type" ColumnName="model_engine_type" />
+          <ScalarProperty Name="model_engine_num_cyl" ColumnName="model_engine_num_cyl" />
+          <ScalarProperty Name="model_engine_cc" ColumnName="model_engine_cc" />
+          <ScalarProperty Name="model_engine_position" ColumnName="model_engine_position" />
+          <ScalarProperty Name="model_body_style" ColumnName="model_body_style" />
+          <ScalarProperty Name="model_year" ColumnName="model_year" />
+          <ScalarProperty Name="model_trim" ColumnName="model_trim" />
+          <ScalarProperty Name="model_name" ColumnName="model_name" />
+          <ScalarProperty Name="make" ColumnName="make" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

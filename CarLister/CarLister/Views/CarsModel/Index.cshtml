@@ -1,0 +1,124 @@
+﻿@model CarLister.Models.CarViewModel
+
+
+@{
+    ViewBag.Title = "Select Car";
+}
+
+<h2>Cool Car List - Find many makes and models from 1936 to present</h2>
+
+
+@using (Html.BeginForm())
+{
+   <div class="container">
+       <div class="row">
+           <div class="col-md-9 text-left">
+               Year: @Html.DropDownListFor(model => model.selectedYear, Model.yearList,
+                        "--Select Year--", new {id = "yearList"})
+               Make: @Html.DropDownListFor(model => model.selectedMake, Model.makeList,
+                        "--Select Make--", new { id = "makeList" })
+               Model: @Html.DropDownListFor(model => model.selectedModel, Model.modelList,
+                        "--Select Model--", new { id = "modelList" })
+           </div>
+           <div class="col-md-3 text-right">
+                @Html.ActionLink("Refresh cars", "Index", null, new { @class = "btn btn-primary" })
+           </div> 
+       </div>
+    </div>
+}
+
+<div class="container" id="PartialView">
+    @{ Html.RenderPartial("CarsList"); }
+</div>
+
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#makeList").prop("disabled", true);
+        $("#modelList").prop("disabled", true);
+
+        //debugger;
+
+        // Paging
+        $('body').on('click', '.pagination a', function (event) {
+            event.preventDefault();
+            var options = {};
+            options.url = $(this).prop('href');
+            options.type = "POST";
+            $.ajax(options).done(function (data) {
+                $('#PartialView').html(data);
+            });
+            return false;
+        });
+
+        $("#yearList").change(function () {
+            if ($("yearList").val() != "") {
+                $("#makeList").prop("disabled", false);
+                $("#modelList").prop("disabled", true);
+                var options = {};
+                options.url = "/HCL2/Selector";
+                options.type = "POST";
+                options.data = JSON.stringify({ filterType: "Year", filterValue: $("#yearList").val() });
+                options.dataType = "json";
+                options.contentType = "application/json";
+                options.success = function (carMakes) {
+                    $("#makeList").empty();
+                    for (key in carMakes) {
+                        $("#makeList").append("<option " + "value = " + key + ">" + carMakes[key] + "</option>"
+                        );
+                    }
+                    $("#PartialView").load('@(Url.Action("CarsList", "HCL2", null, Request.Url.Scheme))?param1=' + $("#yearList").val());
+                 };
+                options.error = function () { alert("Error retrieving model year"); };
+                $.ajax(options);
+            }
+        });
+
+        $("#makeList").change(function () {
+            if ($("#makeList").val() != "") {
+                var options = {};
+                options.url = "/HCL2/Selector";
+                options.type = "POST";
+                options.data = JSON.stringify({ filterType: "Make", filterValue: $("#makeList").val() });
+                options.dataType = "json";
+                options.contentType = "application/json";
+                options.success = function (carModels) {
+                    $("#modelList").empty();
+                    for (key in carModels) {
+                        $("#modelList").append("<option " + "value = " + key + ">" + carModels[key] + "</option>");
+                    }
+                    $("#modelList").prop("disabled", false);
+                    $("#PartialView").load('@(Url.Action("CarsList", "HCL2", null, Request.Url.Scheme))?param1=' + $("yearList").val() + '&param2=' + $("#makeList").val());
+               };
+                options.error = function () { alert("Error retrieving makes"); };
+                $.ajax(options);
+            }
+            else {
+                $("#modelList").empty();
+                $("#modelList").prop("disabled", true);
+            }
+        });
+
+        $("#modelList").change(function () {
+            if ($("#modelList").val() != "") {
+                var options = {};
+                options.url = "/HCL2/Selector";
+                options.type = "POST";
+                options.data = JSON.stringify({ filterType: "Model", filterValue: $("#modelList").val() });
+                options.dataType = "json";
+                options.contentType = "application/json";
+                options.success = function (carModels) {
+                    $("#PartialView").load('@(Url.Action("CarsList", "HCL2", null, Request.Url.Scheme))?param1=' + $("yearList").val() + '&param2=' + $("#makeList").val() + '&param3=' + $("#modelList").val());
+                };
+                options.error = function () { alert("Error retrieving models"); };
+                $.ajax(options);
+            }
+        });
+    });
+</script>
+}
+

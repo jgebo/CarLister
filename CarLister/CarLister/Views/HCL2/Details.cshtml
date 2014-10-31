@@ -1,0 +1,304 @@
+﻿@model CarLister.Models.HCL2
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.model_year) @Html.DisplayFor(model => model.make) @Html.DisplayFor(model => model.model_name) @Html.DisplayFor(model => model.model_trim)</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index", "HCL2")
+</p>
+<div>
+    <hr />
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.model_body_style)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_body_style)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_position)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_cc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_cc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_num_cyl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_num_cyl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mode_engine_valves_per_cyl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mode_engine_valves_per_cyl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_power_ps)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_power_ps)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_power_rpm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_power_rpm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_torque_nm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_torque_nm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_torque_rpm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_torque_rpm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_bore_mm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_bore_mm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_stroke_mm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_stroke_mm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_compression)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_compression)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_engine_fuel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_engine_fuel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_top_speed_kph)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_top_speed_kph)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_0_to_100_kph)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_0_to_100_kph)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_drive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_drive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_transmission_type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_transmission_type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_seats)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_seats)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_doors)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_doors)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_weight_kg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_weight_kg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_length_mm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_length_mm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_width_mm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_width_mm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_height_mm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_height_mm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_wheelbase)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_wheelbase)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_lkm_hwy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_lkm_hwy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_lkm_mixed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_lkm_mixed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_lkm_city)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_lkm_city)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_fuel_cap_l)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_fuel_cap_l)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_sold_in_us)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_sold_in_us)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model_co2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model_co2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.make_display)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.make_display)
+            </dd>
+          
+        </dl> @*class="dl-horizontal*@
+    </div> @* class="col-md-6 *@
+   
+    @if (Model.picurl != null && Model.picurl != "")
+    {
+        @*<dd>*@
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <a href="@Url.Content(Model.picurl)">
+                            <img src="@Url.Content(Model.picurl)" width="700" />
+                        </a>
+                      
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    </div>
+                </div>
+            </div>
+        @*</dd>*@
+    }
+    else
+    {
+        <div>
+           
+                No Picture available;
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
+    }
+          
+    
+</div>
+               

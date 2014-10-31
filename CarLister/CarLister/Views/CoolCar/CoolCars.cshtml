@@ -1,0 +1,42 @@
+﻿@model CarLister.Models.CarViewModel
+@using PagedList.Mvc;
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">*@
+
+<body class="body-blue">
+    <div class="row">
+        <div class="shop-product featured">
+          @*<p id = "row1"></p>*@
+            @foreach (var item in Model.carsList)
+            {
+                @*<script>
+
+
+                    if (id == "row1" )
+                    {*@
+
+
+                        <div class="col-md-4">
+                            <a class="thumbnail" href="@Url.Content(item.picurl)">
+                                <img src="@Url.Content(item.picurl)" width="200" height="200" />
+                                @*<span class="joe">
+                                <img src="@Url.Content(item.picurl)" width="650">
+                            </span>*@
+                            </a>
+                            <a href="shop-item.html"><h5 class="primary-font"></h5></a>
+                            <a href="#" class="btn btn-sm btn-primary">Details</a>
+                        @Html.DisplayFor(model => item.model_year)
+                        @Html.DisplayFor(model => item.make)
+                        @Html.DisplayFor(model => item.model_name)
+                        </div>
+                    @*}
+                 
+                </script>*@
+            }
+        </div>
+               
+        <br />
+    </div>
+    Page @(Model.carsList.PageCount < Model.carsList.PageNumber ? 0 : Model.carsList.PageNumber) of @Model.carsList.PageCount
+    @Html.PagedListPager(Model.carsList, page => @Url.Action("CarsList", new { page }))
+    </body>
+

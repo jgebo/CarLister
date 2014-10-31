@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarListerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarListerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="CarListerModel.Car" />
+    <EntitySet Name="Makes" EntityType="CarListerModel.Make" />
+    <EntitySet Name="Years" EntityType="CarListerModel.Year" />
+    <AssociationSet Name="FK_Car_Year" Association="CarListerModel.FK_Car_Year">
+      <End Role="Year" EntitySet="Years" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <EntitySet Name="Models" EntityType="CarListerModel.Model" />
+    <AssociationSet Name="FK_Car_Model" Association="CarListerModel.FK_Car_Model">
+      <End Role="Model" EntitySet="Models" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Model_Make" Association="CarListerModel.FK_Model_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Model" EntitySet="Models" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModelId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="YearId" Type="Int32" />
+    <Property Name="PicUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Year" Relationship="CarListerModel.FK_Car_Year" FromRole="Car" ToRole="Year" />
+    <NavigationProperty Name="Model" Relationship="CarListerModel.FK_Car_Model" FromRole="Car" ToRole="Model" />
+  </EntityType>
+  <EntityType Name="Make">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Models" Relationship="CarListerModel.FK_Model_Make" FromRole="Make" ToRole="Model" />
+  </EntityType>
+  <EntityType Name="Year">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="CarListerModel.FK_Car_Year" FromRole="Year" ToRole="Car" />
+  </EntityType>
+  <Association Name="FK_Car_Year">
+    <End Type="CarListerModel.Year" Role="Year" Multiplicity="0..1" />
+    <End Type="CarListerModel.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Year">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="YearId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MakeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="CarListerModel.FK_Car_Model" FromRole="Model" ToRole="Car" />
+    <NavigationProperty Name="Make" Relationship="CarListerModel.FK_Model_Make" FromRole="Model" ToRole="Make" />
+  </EntityType>
+  <Association Name="FK_Car_Model">
+    <End Type="CarListerModel.Model" Role="Model" Multiplicity="1" />
+    <End Type="CarListerModel.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="ModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Model_Make">
+    <End Type="CarListerModel.Make" Role="Make" Multiplicity="1" />
+    <End Type="CarListerModel.Model" Role="Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="MakeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
