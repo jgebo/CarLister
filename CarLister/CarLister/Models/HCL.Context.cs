@@ -26,5 +26,7 @@ namespace CarLister.Models
         }
     
         public virtual DbSet<HCL2> HCL2 { get; set; }
+
+        public System.Data.Entity.DbSet<CarLister.Models.HCLListViewModel> HCLListViewModels { get; set; }
     }
 }
