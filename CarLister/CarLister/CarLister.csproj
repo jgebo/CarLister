@@ -184,7 +184,6 @@
     <Compile Include="Controllers\CarsModelController.cs" />
     <Compile Include="Controllers\CoolCarController.cs" />
     <Compile Include="Controllers\HCL2Controller.cs" />
-    <Compile Include="Controllers\HCLListViewModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityRole.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -462,11 +461,6 @@
     <Content Include="Views\CoolCar\Details.cshtml" />
     <Content Include="Views\CoolCar\CarsList.cshtml" />
     <Content Include="Views\CoolCar\CoolCars.cshtml" />
-    <Content Include="Views\HCLListViewModels\Create.cshtml" />
-    <Content Include="Views\HCLListViewModels\Delete.cshtml" />
-    <Content Include="Views\HCLListViewModels\Details.cshtml" />
-    <Content Include="Views\HCLListViewModels\Edit.cshtml" />
-    <Content Include="Views\HCLListViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
